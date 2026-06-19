@@ -177,7 +177,7 @@ a:hover { color: var(--ember); }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  grid-template-columns: minmax(0, 820px);
   gap: 72px;
   align-items: start;
 }
