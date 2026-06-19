@@ -1,0 +1,8 @@
+# Workspace artifacts
+.DS_Store
+.idea/
+.vscode/
+*.swp
+node_modules/
+*.log
+.screenshots/
