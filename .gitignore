@@ -6,3 +6,7 @@
 node_modules/
 *.log
 .screenshots/
+
+# Local design and deployment staging
+.impeccable/
+_site/

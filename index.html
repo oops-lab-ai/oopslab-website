@@ -3,312 +3,360 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oops Lab — We build websites, software, and smarter ways to work</title>
+  <meta name="description" content="AI automation, custom software, and websites. Built by Alex and Ian, from the first conversation to the final detail.">
   <meta name="google-site-verification" content="58jNtowC20sb1nM1KdyhrZoQb2-rrUiVnPpnzV1R2Pw" />
-  <meta name="description" content="Oops Lab — a small studio building software for problems where the data exists but the access layer is broken.">
-  <meta name="theme-color" content="#1a1814">
-
-  <meta property="og:title" content="Oops Lab">
-  <meta property="og:description" content="A small studio building software for problems where the data exists but the access layer is broken.">
-  <meta property="og:url" content="https://oopslab.ai">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Oops Lab">
+  <meta property="og:title" content="Oops Lab — Websites, software, and smarter ways to work">
+  <meta property="og:description" content="AI automation, custom software, and websites. Work directly with Alex and Ian, the developers who plan and build your project.">
+  <meta property="og:url" content="https://oopslab.ai/">
   <meta property="og:image" content="https://oopslab.ai/assets/og.png">
-
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Oops Lab — We build websites, software, and smarter ways to work.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@oopslabai">
-
-  <title>Oops Lab</title>
-
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="twitter:title" content="Oops Lab — Websites, software, and smarter ways to work">
+  <meta name="twitter:description" content="AI automation, custom software, and websites. Built by Alex and Ian.">
+  <meta name="twitter:image" content="https://oopslab.ai/assets/og.png">
+  <meta name="theme-color" content="#f7f8f6">
+  <link rel="canonical" href="https://oopslab.ai/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="font" href="assets/fonts/manrope-extrabold.ttf" type="font/ttf" crossorigin>
+  <link rel="preload" as="font" href="assets/fonts/manrope-medium.ttf" type="font/ttf" crossorigin>
+  <link rel="preload" as="image" href="assets/connection.webp" type="image/webp">
+  <link rel="stylesheet" href="studio.css">
+  <script src="contact-config.js" defer></script>
+  <script src="studio.js" defer></script>
+  <script src="contact.js" defer></script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- grain overlay -->
-<div class="grain" aria-hidden="true"></div>
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <a class="wordmark" href="index.html" aria-label="Oops Lab home">oops lab</a>
 
-<!-- top bar: lab notebook header -->
-<header class="topbar">
-  <div class="topbar__inner">
-    <a class="brand" href="/" aria-label="Oops Lab">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="22" height="22" stroke="currentColor" fill="none" stroke-width="1.6">
-          <rect x="3" y="3" width="26" height="26" rx="1.2"/>
-          <path d="M3 11h26 M3 21h26 M11 3v26 M21 3v26"/>
-          <circle cx="16" cy="16" r="3.6" fill="currentColor" stroke="none"/>
-        </svg>
-      </span>
-      <span class="brand__name">Oops&nbsp;Lab</span>
-    </a>
-    <nav class="topbar__meta">
-      <span class="meta-item">
-        <span class="meta-dot" aria-hidden="true"></span>
-        Operating <em>Mon–Fri</em>
-      </span>
-      <span class="meta-item meta-item--mono">v.06.2026</span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+      <span class="menu-toggle__label">Menu</span>
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Site">
+      <ul class="site-nav__list">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#people">About</a></li>
+      </ul>
+      <a class="pill pill--dark pill--small" href="#contact">Let’s talk</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero__grid">
-    <div class="hero__col hero__col--lead">
-      <p class="eyebrow">
-        <span class="eyebrow__num">01 ·</span> Studio &amp; Co.
-      </p>
-      <h1 class="display">
-        A small studio
-        <em>building software</em>
-        for problems where
-        <span class="display__highlight">the data exists
-        but&nbsp;the&nbsp;access&nbsp;layer<br>is&nbsp;broken</span>.
-      </h1>
-      <div class="hero__intro">
-        <p>
-          Crime statistics. USB device telemetry. Adult day-care elopement.
-          Web automation. Different surfaces, same failure mode &mdash;
-          <em>real signal, locked behind bad APIs</em>.
-        </p>
-        <p>We make the access layer.</p>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <h1 id="hero-title" class="display display--hero">We build websites,<br class="br"> software, and<br class="br"> smarter ways to work.</h1>
+        <p class="hero__lede">AI automation, custom software, and websites. Built by Alex and Ian, from the first conversation to the final detail.</p>
+        <div class="hero__actions">
+          <a class="pill pill--dark" href="#contact">
+            Tell us what you have in mind
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="textlink" href="#work">Explore our work</a>
+        </div>
+      </div>
+
+      <figure class="hero__art" aria-hidden="true">
+        <div class="hero__art-inner">
+          <picture>
+            <source srcset="assets/connection.webp" type="image/webp">
+            <img src="assets/plates/sculpture.png" alt="" width="1254" height="1254" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title" class="display display--section">Made to work. Built to last.</h2>
+      <p class="section-lede">We help businesses put better technology to work.</p>
+
+      <div class="columns columns--rule">
+        <div class="col">
+          <h3>AI &amp; automation</h3>
+          <p>Connect your tools, streamline routine work, and build useful AI agents that fit the way your team already works.</p>
+        </div>
+        <div class="col">
+          <h3>Websites &amp; SEO</h3>
+          <p>Thoughtful websites built for speed, clarity, and discoverability, with technical SEO in the foundation.</p>
+        </div>
+        <div class="col">
+          <h3>Custom software</h3>
+          <p>The tools and integrations your business actually needs, from a missing connection to a full internal app.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHAT WE SHIP -->
-<section class="ship">
-  <div class="section-head">
-    <p class="eyebrow"><span class="eyebrow__num">02 ·</span> What we ship</p>
-    <h2 class="h2">Four products. Different surfaces, same instinct.</h2>
-  </div>
+  <!-- Showcase -->
+  <section class="showcase" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="showcase__head">
+        <h2 id="work-title" class="display display--section">A few ways we can help.</h2>
+        <p class="section-lede">Different businesses. Different needs. Thoughtful solutions.</p>
+      </div>
 
-  <div class="products">
+      <div class="columns columns--rule showcase__grid">
 
-    <article class="product product--featured">
-      <div class="product__head">
-        <div class="product__name">CrimeScore</div>
-        <div class="product__status"><span class="dot dot--live"></span>live</div>
-      </div>
-      <div class="product__body">
-        <p class="product__tagline">Block-group crime risk for any US address.</p>
-        <p class="product__desc">
-          A B2B API that scores 237,000 census block groups across 48 cities.
-          Built for proptech, insurtech, and tenant screening teams who&rsquo;ve
-          outgrown ZIP-level data.
-        </p>
-        <ul class="product__bullets">
-          <li>237K neighborhoods scored</li>
-          <li>JSON-first, agent-friendly</li>
-          <li>SOC&nbsp;path on Stripe</li>
-        </ul>
-      </div>
-      <div class="product__foot">
-        <a class="btn btn--ghost" href="https://crimescore.io" target="_blank" rel="noopener">crimescore.io &rarr;</a>
-      </div>
-    </article>
+        <!-- 1. Website concept -->
+        <article class="demo" aria-labelledby="demo-site-title">
+          <h3 id="demo-site-title">A better first impression</h3>
+          <p class="demo__lede">A clean, modern website that helps you look the part.</p>
 
-    <article class="product">
-      <div class="product__head">
-        <div class="product__name">Mousey</div>
-        <div class="product__status"><span class="dot dot--beta"></span>beta</div>
-      </div>
-      <div class="product__body">
-        <p class="product__tagline">Hardware mouse jiggler, audited and accountable.</p>
-        <p class="product__desc">
-          ESP32&#8209;S3 USB device + dashboard. Stealth-clean.
-          Built because every existing jiggler is either a sketchy Aliexpress
-          dongle or a flaky Python script.
-        </p>
-      </div>
-      <div class="product__foot">
-        <a class="btn btn--ghost" href="https://getmousey.com" target="_blank" rel="noopener">getmousey.com &rarr;</a>
-      </div>
-    </article>
+          <div class="site-demo" id="site-demo" data-style="sage">
+            <div class="site-demo__chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="site-demo__page">
+              <div class="site-demo__bar">
+                <span class="site-demo__brand">Northline</span>
+                <span class="site-demo__links" aria-hidden="true"><span>Home</span><span>Services</span><span>About</span><span>Contact</span></span>
+              </div>
+              <div class="site-demo__body">
+                <div class="site-demo__copy">
+                  <p class="site-demo__title">A clearer direction.</p>
+                  <p class="site-demo__text">Northline helps growing businesses find clarity, build momentum, and make progress.</p>
+                  <span class="site-demo__cta">Get in touch</span>
+                </div>
+                <div class="site-demo__art" aria-hidden="true">
+                  <span class="shape shape--disc"></span>
+                  <span class="shape shape--arch"></span>
+                  <span class="shape shape--bar"></span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <article class="product">
-      <div class="product__head">
-        <div class="product__name">WanderAware</div>
-        <div class="product__status"><span class="dot dot--paused"></span>R&amp;D</div>
-      </div>
-      <div class="product__body">
-        <p class="product__tagline">UHF&nbsp;RFID elopement detection for adult day care.</p>
-        <p class="product__desc">
-          Shoe tags + door readers, alerting in seconds.
-          Validated with operators; hardware prototype in slow lane.
-        </p>
-      </div>
-      <div class="product__foot">
-        <a class="btn btn--ghost" href="https://wanderaware.com" target="_blank" rel="noopener">wanderaware.com &rarr;</a>
-      </div>
-    </article>
+          <div class="demo__foot">
+            <span class="demo__label">Website concept</span>
+            <button class="pill pill--line pill--small demo__control" type="button" id="site-style" aria-describedby="demo-site-title" hidden>Change style</button>
+          </div>
+          <p class="sr-only" id="site-style-status" aria-live="polite"></p>
+        </article>
 
-    <article class="product">
-      <div class="product__head">
-        <div class="product__name">Taskmosis</div>
-        <div class="product__status"><span class="dot dot--paused"></span>dormant</div>
-      </div>
-      <div class="product__body">
-        <p class="product__tagline">Web workflow automation, agent-native.</p>
-        <p class="product__desc">
-          Original umbrella project. Currently parked while we
-          focus on shipping CrimeScore.
-        </p>
-      </div>
-      <div class="product__foot">
-        <a class="btn btn--ghost" href="https://taskmosis.com" target="_blank" rel="noopener">taskmosis.com &rarr;</a>
-      </div>
-    </article>
+        <!-- 2. Automation -->
+        <article class="demo" aria-labelledby="demo-flow-title">
+          <h3 id="demo-flow-title">Less work between tools</h3>
+          <p class="demo__lede">Turn everyday messages into action, automatically.</p>
 
-  </div>
-</section>
+          <div class="flow" id="flow-demo" data-step="0">
+            <div class="flow__card" id="flow-inquiry">
+              <div class="flow__head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <span class="flow__kind">New inquiry</span>
+                <span class="flow__meta">9:14 AM</span>
+              </div>
+              <p class="flow__from">Sarah Kim <span>Interested in working together</span></p>
+              <p class="flow__text">Hi, I’m curious about your services and would love to learn more about how you work. Can you share next steps?</p>
+            </div>
 
-<!-- THE BET -->
-<section class="bet">
-  <div class="section-head">
-    <p class="eyebrow"><span class="eyebrow__num">03 ·</span> The instinct</p>
-  </div>
-  <div class="bet__grid">
-    <blockquote class="pull">
-      <span class="pull__open">&ldquo;</span>
-      The interesting work isn&rsquo;t in
-      <em>generating</em>&nbsp;new&nbsp;data &mdash; it&rsquo;s in
-      making the data we already have <em>legible</em>.
-    </blockquote>
-    <div class="bet__body">
-      <p>
-        Crime stats sit in 800+ municipal portals. Neighborhood risk
-        sits in private vendors at $50K&nbsp;contracts. USB telemetry
-        sits behind closed firmware. RFID location sits behind enterprise
-        sales cycles. Every one of these is solved &mdash;
-        for somebody else, at the wrong price, behind the wrong contract.
-      </p>
-      <p>
-        We pick problems where the access layer is the bottleneck and
-        rebuild it for whoever&rsquo;s being left out: developers,
-        small operators, AI agents.
-      </p>
-      <p class="bet__sig">&mdash; Ian &amp; Alex</p>
+            <div class="flow__arrow" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </div>
+
+            <div class="flow__card flow__card--draft" id="flow-draft">
+              <div class="flow__head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                <span class="flow__kind">Draft reply</span>
+                <span class="flow__meta flow__status" id="flow-draft-status">For your review</span>
+              </div>
+              <p class="flow__placeholder">Run the example to draft a reply for review.</p>
+              <p class="flow__text">Hi Sarah,</p>
+              <p class="flow__text">Thanks for reaching out! We’d be happy to share more about our process and set up a time to chat. Here are a few times that work for us…</p>
+            </div>
+
+            <div class="flow__arrow" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </div>
+
+            <div class="flow__card flow__card--crm" id="flow-crm">
+              <div class="flow__head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                <span class="flow__kind">Add to CRM</span>
+              </div>
+              <div class="flow__row">
+                <p class="flow__from">Sarah Kim <span>New lead · Inquiry</span></p>
+                <span class="flow__tag" id="flow-tag">Pending</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="demo__status" id="flow-status" aria-live="polite">Every step stays visible. The reply only goes out once you approve it.</p>
+
+          <div class="demo__foot">
+            <span class="demo__label">Automation example</span>
+            <div class="demo__controls" id="flow-controls" hidden>
+              <button class="pill pill--line pill--small demo__control" type="button" id="flow-run">Run example</button>
+              <button class="pill pill--line pill--small demo__control" type="button" id="flow-approve" disabled>Approve example</button>
+              <button class="textlink textlink--button demo__control" type="button" id="flow-reset">Reset</button>
+            </div>
+          </div>
+          <p class="demo__fine">This demo never sends email or contacts any service.</p>
+        </article>
+
+        <!-- 3. Knowledge assistant -->
+        <article class="demo" aria-labelledby="demo-ask-title">
+          <h3 id="demo-ask-title">Answers, without the search</h3>
+          <p class="demo__lede">Get quick, accurate answers from your own knowledge.</p>
+
+          <div class="chat" id="chat-demo">
+            <div class="chat__msg">
+              <span class="chat__avatar" aria-hidden="true">TS</span>
+              <div class="chat__bubble">
+                <p class="chat__who">Team member <span class="chat__time">10:27 AM</span></p>
+                <p class="chat__text" id="chat-question">Where is our onboarding checklist?</p>
+              </div>
+            </div>
+
+            <div class="chat__msg chat__msg--assistant">
+              <span class="chat__avatar chat__avatar--ai" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>
+              </span>
+              <div class="chat__bubble chat__bubble--ai" aria-live="polite" aria-atomic="true" id="chat-answer">
+                <p class="chat__who">Assistant <span class="chat__time">10:27 AM</span></p>
+                <p class="chat__text" id="chat-answer-text">Here is the checklist from your team handbook.</p>
+                <div class="chat__source">
+                  <div class="chat__source-head">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></svg>
+                    <span><strong id="chat-source-title">Onboarding checklist</strong><small>Source: Sample team handbook</small></span>
+                  </div>
+                  <ol class="chat__list" id="chat-source-list">
+                    <li>Send welcome email</li>
+                    <li>Set up accounts</li>
+                    <li>Share key resources</li>
+                    <li>Schedule first-week check-in</li>
+                    <li>Assign a buddy</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo__foot">
+            <span class="demo__label">AI agent example</span>
+            <div class="demo__controls" id="chat-controls" hidden>
+              <span class="demo__controls-label" id="chat-controls-label">Example question</span>
+              <div class="seg" role="group" aria-labelledby="chat-controls-label">
+                <button class="seg__btn demo__control" type="button" data-topic="onboarding" aria-pressed="true">Onboarding</button>
+                <button class="seg__btn demo__control" type="button" data-topic="timeoff" aria-pressed="false">Time off</button>
+              </div>
+            </div>
+          </div>
+          <p class="demo__fine">Illustrative answer from a sample handbook, not a live assistant.</p>
+        </article>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOUNDERS -->
-<section class="founders">
-  <div class="section-head">
-    <p class="eyebrow"><span class="eyebrow__num">04 ·</span> Founders</p>
-  </div>
-  <div class="founders__grid">
+  <!-- Process -->
+  <section class="process" id="process" aria-labelledby="process-title">
+    <div class="wrap process__grid">
+      <div class="process__head">
+        <h2 id="process-title" class="display display--section">From the first conversation to the final detail.</h2>
+        <p class="section-lede">A clear, collaborative process that keeps your goals in focus and your project moving forward.</p>
+      </div>
 
-    <article class="founder">
-      <div class="founder__avatar founder__avatar--ian" aria-hidden="true">IM</div>
-      <div class="founder__body">
-        <h3 class="founder__name">Ian Matlak</h3>
-        <p class="founder__role">Co-Founder · Engineering</p>
-        <p class="founder__blurb">
-          Software engineer at Fiserv. Full-stack with a frontend lean.
-          Built CrimeScore from a weekend ETL into a live B2B API.
-          Hackathon habit; doesn&rsquo;t finish things halfway.
-        </p>
-        <ul class="founder__links">
-          <li><a href="https://ianthe.dev" target="_blank" rel="noopener">ianthe.dev</a></li>
-          <li><a href="https://github.com/mnai01" target="_blank" rel="noopener">github</a></li>
-          <li><a href="https://x.com/mnai01" target="_blank" rel="noopener">x</a></li>
+      <ol class="columns columns--rule process__steps">
+        <li class="col">
+          <span class="step-num">01</span>
+          <h3>Understand</h3>
+          <p>We take the time to learn about your business, your goals, and the problems you want to solve.</p>
+        </li>
+        <li class="col">
+          <span class="step-num">02</span>
+          <h3>Build</h3>
+          <p>We design and develop a solution that fits, keeping you involved along the way.</p>
+        </li>
+        <li class="col">
+          <span class="step-num">03</span>
+          <h3>Refine</h3>
+          <p>We iterate, test, and polish until it’s working the way it should.</p>
+        </li>
+      </ol>
+    </div>
+
+  </section>
+
+  <!-- Founders -->
+  <section class="people" id="people" aria-labelledby="people-title">
+    <div class="wrap people__grid">
+      <div class="people__copy">
+        <h2 id="people-title" class="display display--section">Two developers.<br class="br"> Direct collaboration.</h2>
+        <p class="section-lede">Work directly with Alex and Ian, the developers who plan and build your project.</p>
+
+        <ul class="founders">
+          <li>
+            <h3 class="founders__name">Alexandre Vasconcelos</h3>
+            <p class="founders__bio">With a background in technology consulting, Alex works across AI, enterprise software, and cloud systems. His experience spans software architecture, data engineering, and technical leadership.</p>
+          </li>
+          <li>
+            <h3 class="founders__name">Ian Matlak</h3>
+            <p class="founders__bio">Ian’s background brings together full-stack engineering, user experience, and product development. He has experience leading development teams and working across web technologies and applied AI.</p>
+          </li>
         </ul>
       </div>
-    </article>
 
-    <article class="founder">
-      <div class="founder__avatar founder__avatar--alex" aria-hidden="true">AV</div>
-      <div class="founder__body">
-        <h3 class="founder__name">Alexandre Vasconcelos</h3>
-        <p class="founder__role">Co-Founder · Infrastructure</p>
-        <p class="founder__blurb">
-          Software engineer at Capgemini.
-          Math &amp; physics background, builds infrastructure for a living.
-          Modernized legacy ASP.NET into NestJS&nbsp;+&nbsp;React for a
-          $2.5T-AUM client and now treats Terraform like a love language.
-        </p>
-        <ul class="founder__links">
-          <li><a href="https://www.linkedin.com/in/alexnvasconcelos" target="_blank" rel="noopener">linkedin</a></li>
-          <li><a href="https://github.com/alex-vasconcelos" target="_blank" rel="noopener">github</a></li>
-        </ul>
+      <figure class="people__art" aria-hidden="true">
+        <img src="assets/still-life.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="close" id="contact" aria-labelledby="close-title">
+    <div class="wrap close__grid">
+      <h2 id="close-title" class="display display--section">What would you like<br class="br"> to build?</h2>
+      <div class="close__action">
+        <p class="contact-intro">Tell us a little about your business and what you have in mind.</p>
+        <form class="inquiry-form" id="inquiry-form" method="post" action="https://formsubmit.co/dev@oopslab.ai">
+          <div class="inquiry-pair">
+            <div class="inquiry-field"><label for="inquiry-name">Your name</label><input id="inquiry-name" name="name" autocomplete="name" required maxlength="100"></div>
+            <div class="inquiry-field"><label for="inquiry-email">Email address</label><input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
+          </div>
+          <div class="inquiry-field"><label for="inquiry-company">Business or website <span>(optional)</span></label><input id="inquiry-company" name="company" autocomplete="organization" maxlength="200"></div>
+          <div class="inquiry-field"><label for="inquiry-service">What can we help with?</label><select id="inquiry-service" name="service"><option value="Not sure yet">Let’s figure it out together</option>AI &amp; automation</option><option>Websites &amp; SEO</option><option>Custom software</option></select></div>
+          <div class="inquiry-field"><label for="inquiry-message">Tell us about your project</label><textarea id="inquiry-message" name="message" rows="4" required minlength="20" maxlength="5000" placeholder="What would you like to build or improve?"></textarea></div>
+          <div class="inquiry-honey" aria-hidden="true"><label for="inquiry-website">Leave this field empty</label><input id="inquiry-website" name="_honey" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="_subject" value="New Oops Lab project inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_url" value="https://oopslab.ai/#contact">
+          <p id="inquiry-availability" class="inquiry-help" hidden>Online inquiries are temporarily unavailable. Please email dev@oopslab.ai.</p>
+          <noscript><p class="inquiry-help">Sending will continue on FormSubmit.</p></noscript>
+          <div class="inquiry-actions"><button class="pill pill--light" id="inquiry-submit" type="submit">Send inquiry <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="inquiry-copy" id="inquiry-copy" type="button" hidden>Copy project details</button></div>
+          <p class="inquiry-status" id="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <p class="inquiry-help">Your inquiry is processed by FormSubmit so we can respond. <a href="privacy.html">Privacy policy</a></p>
+        </form>
+        <a class="close__email" href="mailto:dev@oopslab.ai">dev@oopslab.ai</a>
       </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-head">
-    <p class="eyebrow"><span class="eyebrow__num">05 ·</span> Get in touch</p>
-  </div>
-  <div class="contact__grid">
-    <a class="contact__cta" href="mailto:oopslabai@gmail.com">
-      <span class="contact__cta-label">Mail us</span>
-      <span class="contact__cta-value">oopslabai@gmail.com</span>
-      <span class="contact__cta-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-
-    <ul class="contact__list">
-      <li>
-        <span class="contact__k">GitHub</span>
-        <a href="https://github.com/oops-lab-ai" target="_blank" rel="noopener">@oops-lab-ai</a>
-      </li>
-      <li>
-        <span class="contact__k">X</span>
-        <a href="https://x.com/oopslabai" target="_blank" rel="noopener">@oopslabai</a>
-      </li>
-      <li>
-        <span class="contact__k">Press &amp; partners</span>
-        <a href="mailto:oopslabai@gmail.com">oopslabai@gmail.com</a>
-      </li>
-    </ul>
-  </div>
-</section>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__col">
-      <div class="footer__brand">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="18" height="18" stroke="currentColor" fill="none" stroke-width="1.6">
-            <rect x="3" y="3" width="26" height="26" rx="1.2"/>
-            <path d="M3 11h26 M3 21h26 M11 3v26 M21 3v26"/>
-            <circle cx="16" cy="16" r="3.6" fill="currentColor" stroke="none"/>
-          </svg>
-        </span>
-        <span>Oops Lab</span>
-      </div>
-      <p class="footer__legal">
-        Oops Lab LLC &middot; Formed Apr&nbsp;2026, New York
-      </p>
-    </div>
-    <div class="footer__col">
-      <p class="footer__small">Contact</p>
-      <a href="mailto:oopslabai@gmail.com">oopslabai@gmail.com</a>
-    </div>
-    <div class="footer__col">
-      <p class="footer__small">Legal</p>
-      <ul class="footer__links">
-        <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
-      </ul>
-    </div>
-    <div class="footer__col footer__col--fineprint">
-      <p class="footer__small">&copy; 2026 Oops Lab LLC. All product names, trademarks and registered trademarks are property of their respective owners.</p>
-    </div>
+<footer class="site-foot">
+  <div class="wrap site-foot__row">
+    <a class="wordmark wordmark--foot" href="index.html" aria-label="Oops Lab home">oops lab</a>
+    <ul class="site-foot__links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><small>© 2026 Oops Lab LLC</small></li>
+    </ul>
   </div>
 </footer>
 
