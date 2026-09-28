@@ -13,6 +13,15 @@
 - Fixed a real integration issue: FormSubmit labels successful JSON as text/html. The client now parses JSON and checks explicit success. Captured-success browser replay passes, along with negative, activation, and non-JSON regression cases.
 - The Pages workflow publishes only runtime website files, excluding working documentation and image-generation metadata.
 
-## Deployment acceptance
+## Deployment acceptance — passed
 
-After pushing to main, confirm the Pages workflow succeeds and compare live HTML, CSS, JavaScript, and social image against the release. Submit a labeled production inquiry, activate that origin if requested, and verify both the browser success state and received message. Local success is not a substitute for those checks.
+- Website release `934f73d2cf616344b885cde3edf2ca0479cd07bd` pushed directly to `main` with user approval.
+- GitHub Pages deployment succeeded: https://github.com/oops-lab-ai/oopslab-website/actions/runs/36364849560.
+- Ten live resources (homepage, styles, scripts, social image, discovery files, and legal pages) return 200 and match the release byte for byte.
+- Live browser at desktop and phone width: correct approved copy, no horizontal overflow, no broken images, and no console errors.
+- Custom 404 responds correctly; authoring documentation is not hosted. www redirects to the canonical hostname. HTTPS enforcement is enabled; a fresh HTTP request returns 301 to HTTPS.
+- Production origin activation completed. Final inquiry submitted from https://oopslab.ai/ displayed the success message and cleared the form.
+- Received email verified in business Gmail, addressed to dev, with source https://oopslab.ai/ and reference `OOPS-LAUNCH-2026-09-28T01-00-46-007Z-PRODUCTION-FINAL`, submitted September 28, 2026 at 01:11 UTC (September 27 at 9:11 PM ET).
+- Initial local test messages were classified as spam; the final production message appeared without a spam warning. Inbox placement remains controlled by the mail provider.
+
+Run the response regression checks from the repository root with `node docs/tests/contact-response.cjs`.

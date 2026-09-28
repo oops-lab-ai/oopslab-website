@@ -12,6 +12,6 @@ Pushes to `main` deploy to https://oopslab.ai/ through the GitHub Pages workflow
 
 ## Inquiries
 
-The contact form uses FormSubmit to deliver to dev@oopslab.ai. The recipient has been activated and actual test inquiries have been received. Initial test mail was classified as spam; check that folder if an inquiry appears missing. Each new origin may require activation. See [contact form notes](docs/contact-form.md).
+The contact form uses FormSubmit to deliver to dev@oopslab.ai. Both preview and production origins have been activated, and a final live-site test inquiry was received. Initial test mail was classified as spam; check that folder if an inquiry appears missing. Each new origin may require activation. See [contact form notes](docs/contact-form.md).
 
 See [launch checks](docs/tests/launch-check.md) and [design notes](docs/consultancy-studio.md).

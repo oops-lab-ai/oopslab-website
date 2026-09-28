@@ -4,7 +4,7 @@ The homepage sends inquiry JSON to https://formsubmit.co/ajax/dev@oopslab.ai. Th
 
 ## One-time activation and delivery verification
 
-FormSubmit sends an activation email to the recipient on the first real submission. The owner must confirm it from dev@oopslab.ai. Then submit a test inquiry from the final website origin and verify it arrives in that inbox (including spam). On September 27, 2026 (ET), the local preview form was activated and actual inquiries were confirmed in the recipient’s business Gmail account. Initial test inquiries landed in Spam. Production-origin verification follows deployment; do not infer it from a local test.
+FormSubmit sends an activation email to the recipient on the first real submission. The owner must confirm it from dev@oopslab.ai. Then submit a test inquiry from the final website origin and verify it arrives in that inbox (including spam). On September 27, 2026 (ET), the local preview form was activated and actual inquiries were confirmed in the recipient’s business Gmail account. Initial test inquiries landed in Spam. The production origin was then activated and a final inquiry from https://oopslab.ai/ was confirmed in received email at 01:11 UTC on September 28 (9:11 PM ET September 27). The live form displayed success and cleared the fields.
 
 Official setup: https://formsubmit.co/
 AJAX: https://formsubmit.co/ajax-documentation
