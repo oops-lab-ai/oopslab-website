@@ -30,8 +30,8 @@ jobs:
       - name: Prepare website files
         run: |
           mkdir -p _site/assets
-          cp index.html privacy.html terms.html 404.html CNAME robots.txt sitemap.xml _site/
-          cp studio.css styles.css studio.js contact.js contact-config.js _site/
+          cp index.html website-privacy.html website-terms.html privacy.html terms.html 404.html CNAME robots.txt sitemap.xml _site/
+          cp studio.css website-legal.css styles.css studio.js contact.js contact-config.js _site/
           rsync -a --exclude='*.json' --exclude='og.svg' assets/ _site/assets/
 
       - name: Upload artifact
