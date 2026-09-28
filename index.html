@@ -117,10 +117,17 @@
 
         <!-- 1. Website concept -->
         <article class="demo" aria-labelledby="demo-site-title">
-          <h3 id="demo-site-title">A better first impression</h3>
-          <p class="demo__lede">A clean, modern website that helps you look the part.</p>
+          <h3 id="demo-site-title">Website design</h3>
+          <p class="demo__lede">A website that fits your business. Explore three ways the same content can take shape.</p>
 
-          <div class="site-demo" id="site-demo" data-style="sage">
+          <div class="demo__toolbar" id="site-layout-controls" hidden>
+            <div class="seg" role="group" aria-label="Example website layout">
+              <button class="seg__btn demo__control" type="button" data-layout="classic" aria-pressed="true">Classic</button>
+              <button class="seg__btn demo__control" type="button" data-layout="editorial" aria-pressed="false">Editorial</button>
+              <button class="seg__btn demo__control" type="button" data-layout="showcase" aria-pressed="false">Showcase</button>
+            </div>
+          </div>
+          <div class="site-demo" id="site-demo" data-layout="classic">
             <div class="site-demo__chrome" aria-hidden="true"><i></i><i></i><i></i></div>
             <div class="site-demo__page">
               <div class="site-demo__bar">
@@ -129,8 +136,8 @@
               </div>
               <div class="site-demo__body">
                 <div class="site-demo__copy">
-                  <p class="site-demo__title">A clearer direction.</p>
-                  <p class="site-demo__text">Northline helps growing businesses find clarity, build momentum, and make progress.</p>
+                  <p class="site-demo__title">Space to think. Room to grow.</p>
+                  <p class="site-demo__text">Thoughtful spaces for the way you live and work.</p>
                   <span class="site-demo__cta">Get in touch</span>
                 </div>
                 <div class="site-demo__art" aria-hidden="true">
@@ -144,76 +151,78 @@
 
           <div class="demo__foot">
             <span class="demo__label">Website concept</span>
-            <button class="pill pill--line pill--small demo__control" type="button" id="site-style" aria-describedby="demo-site-title" hidden>Change style</button>
+            <span class="demo__label" id="site-layout-name">Classic layout</span>
           </div>
-          <p class="sr-only" id="site-style-status" aria-live="polite"></p>
+          <p class="sr-only" id="site-layout-status" aria-live="polite"></p>
         </article>
 
         <!-- 2. Automation -->
         <article class="demo" aria-labelledby="demo-flow-title">
-          <h3 id="demo-flow-title">Less work between tools</h3>
-          <p class="demo__lede">Turn everyday messages into action, automatically.</p>
+          <h3 id="demo-flow-title">AI workflow automation</h3>
+          <p class="demo__lede">Connect your tools, let AI prepare the work, and keep a person in control.</p>
 
+          <div class="demo__toolbar demo__controls" id="flow-controls" hidden>
+            <button class="pill pill--line pill--small demo__control" type="button" id="flow-run">Run demo</button>
+            <button class="textlink textlink--button demo__control" type="button" id="flow-reset" hidden>Reset</button>
+          </div>
           <div class="flow" id="flow-demo" data-step="0">
-            <div class="flow__card" id="flow-inquiry">
-              <div class="flow__head">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                <span class="flow__kind">New inquiry</span>
-                <span class="flow__meta">9:14 AM</span>
+            <div class="flow__canvas" aria-label="Example workflow: inquiry to AI draft, human approval, then email and CRM">
+              <div class="flow__node" id="flow-trigger">
+                <span class="flow__symbol" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                <span><strong>Inquiry received</strong><small>Website form</small></span>
+                <span class="flow__state" id="flow-trigger-state">Ready</span>
               </div>
-              <p class="flow__from">Sarah Kim <span>Interested in working together</span></p>
-              <p class="flow__text">Hi, I’m curious about your services and would love to learn more about how you work. Can you share next steps?</p>
-            </div>
-
-            <div class="flow__arrow" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-            </div>
-
-            <div class="flow__card flow__card--draft" id="flow-draft">
-              <div class="flow__head">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                <span class="flow__kind">Draft reply</span>
-                <span class="flow__meta flow__status" id="flow-draft-status">For your review</span>
+              <div class="flow__edge" aria-hidden="true"></div>
+              <div class="flow__node flow__node--ai" id="flow-ai">
+                <span class="flow__symbol flow__symbol--ai" aria-hidden="true">AI</span>
+                <span><strong>Draft a reply</strong><small>Understand the request</small></span>
+                <span class="flow__state" id="flow-ai-state">Waiting</span>
               </div>
-              <p class="flow__placeholder">Run the example to draft a reply for review.</p>
-              <p class="flow__text">Hi Sarah,</p>
-              <p class="flow__text">Thanks for reaching out! We’d be happy to share more about our process and set up a time to chat. Here are a few times that work for us…</p>
-            </div>
-
-            <div class="flow__arrow" aria-hidden="true">
-              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-            </div>
-
-            <div class="flow__card flow__card--crm" id="flow-crm">
-              <div class="flow__head">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-                <span class="flow__kind">Add to CRM</span>
+              <div class="flow__edge" aria-hidden="true"></div>
+              <div class="flow__node flow__node--approval" id="flow-review">
+                <span class="flow__symbol" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+                <span><strong>You approve</strong><small>Review before anything goes out</small></span>
+                <span class="flow__state" id="flow-review-state">Waiting</span>
               </div>
-              <div class="flow__row">
-                <p class="flow__from">Sarah Kim <span>New lead · Inquiry</span></p>
-                <span class="flow__tag" id="flow-tag">Pending</span>
+              <div class="flow__edge flow__edge--branch" aria-hidden="true"></div>
+              <div class="flow__branches">
+                <div class="flow__node flow__node--output" id="flow-email">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7 18-4-7-7-4Z M10 14 21 3"/></svg>
+                  <strong>Send reply</strong><small id="flow-email-state">After approval</small>
+                </div>
+                <div class="flow__node flow__node--output" id="flow-crm">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+                  <strong>Update CRM</strong><small id="flow-crm-state">After approval</small>
+                </div>
               </div>
+            </div>
+            <div class="flow__review" id="flow-review-panel" hidden>
+              <label for="flow-reply">Example reply <span id="flow-reply-label">Ready for your review</span></label>
+              <textarea id="flow-reply" rows="3" maxlength="500" readonly>Hi Sarah, thanks for your interest in a website redesign. Could you share your current website and a good time to talk?</textarea>
+              <div class="flow__review-actions">
+                <button class="pill pill--dark pill--small" type="button" id="flow-approve">Approve demo</button>
+                <button class="textlink textlink--button" type="button" id="flow-edit">Edit draft</button>
+              </div>
+              <p class="demo__fine" id="flow-edit-status" aria-live="polite"></p>
             </div>
           </div>
-
-          <p class="demo__status" id="flow-status" aria-live="polite">Every step stays visible. The reply only goes out once you approve it.</p>
-
-          <div class="demo__foot">
-            <span class="demo__label">Automation example</span>
-            <div class="demo__controls" id="flow-controls" hidden>
-              <button class="pill pill--line pill--small demo__control" type="button" id="flow-run">Run example</button>
-              <button class="pill pill--line pill--small demo__control" type="button" id="flow-approve" disabled>Approve example</button>
-              <button class="textlink textlink--button demo__control" type="button" id="flow-reset">Reset</button>
-            </div>
-          </div>
-          <p class="demo__fine">This demo never sends email or contacts any service.</p>
+          <p class="demo__status" id="flow-status" aria-live="polite">Example: a website inquiry becomes a reviewed reply and a new CRM contact.</p>
+          <div class="demo__foot"><span class="demo__label">Automation example</span></div>
+          <p class="demo__fine">An interactive illustration. No email is sent and no tools are connected.</p>
         </article>
 
         <!-- 3. Knowledge assistant -->
         <article class="demo" aria-labelledby="demo-ask-title">
-          <h3 id="demo-ask-title">Answers, without the search</h3>
-          <p class="demo__lede">Get quick, accurate answers from your own knowledge.</p>
+          <h3 id="demo-ask-title">AI document search</h3>
+          <p class="demo__lede">Ask a question about your documents. Get an answer with the source right beside it.</p>
 
+          <div class="demo__toolbar demo__controls" id="chat-controls" hidden>
+            <div class="seg" role="group" aria-label="Example document question">
+              <button class="seg__btn demo__control" type="button" data-topic="onboarding" aria-pressed="true">Onboarding</button>
+              <button class="seg__btn demo__control" type="button" data-topic="timeoff" aria-pressed="false">Time off</button>
+              <button class="seg__btn demo__control" type="button" data-topic="expenses" aria-pressed="false">Expenses</button>
+            </div>
+          </div>
           <div class="chat" id="chat-demo">
             <div class="chat__msg">
               <span class="chat__avatar" aria-hidden="true">TS</span>
@@ -229,35 +238,22 @@
               </span>
               <div class="chat__bubble chat__bubble--ai" aria-live="polite" aria-atomic="true" id="chat-answer">
                 <p class="chat__who">Assistant <span class="chat__time">10:27 AM</span></p>
-                <p class="chat__text" id="chat-answer-text">Here is the checklist from your team handbook.</p>
+                <p class="chat__text" id="chat-answer-text">Start with a welcome email, account access, and the team handbook. Then arrange a first-week check-in.</p>
                 <div class="chat__source">
                   <div class="chat__source-head">
                     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></svg>
                     <span><strong id="chat-source-title">Onboarding checklist</strong><small>Source: Sample team handbook</small></span>
                   </div>
-                  <ol class="chat__list" id="chat-source-list">
-                    <li>Send welcome email</li>
-                    <li>Set up accounts</li>
-                    <li>Share key resources</li>
-                    <li>Schedule first-week check-in</li>
-                    <li>Assign a buddy</li>
-                  </ol>
+                  <p class="chat__excerpt"><mark id="chat-source-excerpt">Before day one, send the welcome email, set up accounts, and share the team handbook. Schedule a first-week check-in and assign a buddy.</mark></p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="demo__foot">
-            <span class="demo__label">AI agent example</span>
-            <div class="demo__controls" id="chat-controls" hidden>
-              <span class="demo__controls-label" id="chat-controls-label">Example question</span>
-              <div class="seg" role="group" aria-labelledby="chat-controls-label">
-                <button class="seg__btn demo__control" type="button" data-topic="onboarding" aria-pressed="true">Onboarding</button>
-                <button class="seg__btn demo__control" type="button" data-topic="timeoff" aria-pressed="false">Time off</button>
-              </div>
-            </div>
+            <span class="demo__label">AI search example</span>
           </div>
-          <p class="demo__fine">Illustrative answer from a sample handbook, not a live assistant.</p>
+          <p class="demo__fine">Preset answers from a sample handbook, not a live AI search.</p>
         </article>
 
       </div>

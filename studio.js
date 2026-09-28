@@ -65,117 +65,125 @@
     });
   }
 
-  /* ---------------------------------------------------------------------
-     Demo 1: website concept — switch the illustrative palette
-     ------------------------------------------------------------------ */
+  /* Website layouts: one brand, three distinct compositions. */
   var site = document.getElementById('site-demo');
-  var styleBtn = document.getElementById('site-style');
-  var styleStatus = document.getElementById('site-style-status');
-  if (site && styleBtn) {
-    styleBtn.hidden = false;
-    styleBtn.addEventListener('click', function () {
-      var next = site.getAttribute('data-style') === 'sage' ? 'graphite' : 'sage';
-      site.setAttribute('data-style', next);
-      styleBtn.textContent = next === 'sage' ? 'Change style' : 'Change style back';
-      if (styleStatus) styleStatus.textContent = 'Website concept now shown in the ' + next + ' style.';
+  var layoutControls = document.getElementById('site-layout-controls');
+  if (site && layoutControls) {
+    layoutControls.hidden = false;
+    layoutControls.querySelectorAll('[data-layout]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        site.dataset.layout = button.dataset.layout;
+        layoutControls.querySelectorAll('button').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b === button));
+        });
+        document.getElementById('site-layout-name').textContent = button.textContent + ' layout';
+        document.getElementById('site-layout-status').textContent = 'Website example changed to the ' + button.textContent.toLowerCase() + ' layout.';
+      });
     });
   }
 
-  /* ---------------------------------------------------------------------
-     Demo 2: automation — inquiry → draft for review → CRM summary.
-     Purely local; this demo never sends email or contacts any service.
-     ------------------------------------------------------------------ */
+  /* Local workflow illustration. Approval gates both output nodes. */
   var flow = document.getElementById('flow-demo');
-  var flowControls = document.getElementById('flow-controls');
-  if (flow && flowControls) {
-    var runBtn = document.getElementById('flow-run');
-    var approveBtn = document.getElementById('flow-approve');
-    var resetBtn = document.getElementById('flow-reset');
-    var status = document.getElementById('flow-status');
-    var draftStatus = document.getElementById('flow-draft-status');
-    var tag = document.getElementById('flow-tag');
-
-    var messages = {
-      0: 'A new inquiry has arrived. Run the example to draft a reply for review.',
-      1: 'Draft ready. Nothing goes out until you approve it.',
-      2: 'Approved. The reply is marked as sent in this example and Sarah is now a lead in the CRM.'
+  var controls = document.getElementById('flow-controls');
+  if (flow && controls) {
+    var run = document.getElementById('flow-run');
+    var reset = document.getElementById('flow-reset');
+    var approve = document.getElementById('flow-approve');
+    var edit = document.getElementById('flow-edit');
+    var reply = document.getElementById('flow-reply');
+    var defaultReply = reply.value;
+    var state = 0;
+    var announce = document.getElementById('flow-status');
+    var setState = function (next) {
+      state = next;
+      flow.dataset.step = String(next);
+      run.disabled = next !== 0;
+      reset.hidden = next === 0;
+      document.getElementById('flow-review-panel').hidden = next === 0;
+      document.querySelector('.flow__review-actions').hidden = next !== 1;
+      ['trigger', 'ai', 'review', 'email', 'crm'].forEach(function (key) {
+        var node = document.getElementById('flow-' + key);
+        node.classList.toggle('is-complete', next === 2 || (next === 1 && (key === 'trigger' || key === 'ai')));
+        node.classList.toggle('is-current', next === 1 && key === 'review');
+      });
+      document.getElementById('flow-trigger-state').textContent = next ? 'Received' : 'Ready';
+      document.getElementById('flow-ai-state').textContent = next ? 'Draft ready' : 'Waiting';
+      document.getElementById('flow-review-state').textContent = next === 2 ? 'Approved' : next === 1 ? 'Your turn' : 'Waiting';
+      document.getElementById('flow-email-state').textContent = next === 2 ? 'Sent in demo' : 'After approval';
+      document.getElementById('flow-crm-state').textContent = next === 2 ? 'Updated in demo' : 'After approval';
+      document.getElementById('flow-reply-label').textContent = next === 2 ? 'Approved example reply' : 'Ready for your review';
+      announce.textContent = [
+        'Example: a website inquiry becomes a reviewed reply and a new CRM contact.',
+        'AI prepared a reply to Sarah’s website inquiry. Review or edit it; both actions are waiting for your approval.',
+        'Demo complete: your approved reply is marked as sent and Sarah is added to the CRM. Nothing was sent outside this page.'
+      ][next];
     };
-
-    var setStep = function (step) {
-      flow.setAttribute('data-step', String(step));
-      runBtn.disabled = step !== 0;
-      approveBtn.disabled = step !== 1;
-      resetBtn.hidden = step === 0;
-      status.textContent = messages[step];
-      draftStatus.textContent = step === 2 ? 'Approved' : 'For your review';
-      tag.textContent = step === 2 ? 'Added' : 'Pending';
-      tag.classList.toggle('is-added', step === 2);
-    };
-
-    flowControls.hidden = false;
-    setStep(0);
-
-    runBtn.addEventListener('click', function () {
-      setStep(1);
-      approveBtn.focus();
+    controls.hidden = false;
+    setState(0);
+    run.addEventListener('click', function () { setState(1); approve.focus(); });
+    edit.addEventListener('click', function () {
+      reply.readOnly = false;
+      reply.focus();
+      document.getElementById('flow-edit-status').textContent = 'Edit the example reply, then approve when you’re ready.';
     });
-    approveBtn.addEventListener('click', function () {
-      setStep(2);
-      resetBtn.focus();
+    reply.addEventListener('input', function () {
+      if (reply.value.trim()) document.getElementById('flow-edit-status').textContent = '';
     });
-    resetBtn.addEventListener('click', function () {
-      setStep(0);
-      runBtn.focus();
+    approve.addEventListener('click', function () {
+      if (state !== 1) return;
+      if (!reply.value.trim()) {
+        document.getElementById('flow-edit-status').textContent = 'Add a reply before approving the example.';
+        reply.readOnly = false;
+        reply.focus();
+        return;
+      }
+      reply.readOnly = true;
+      document.getElementById('flow-edit-status').textContent = '';
+      setState(2);
+      reset.focus();
+    });
+    reset.addEventListener('click', function () {
+      reply.value = defaultReply;
+      reply.readOnly = true;
+      document.getElementById('flow-edit-status').textContent = '';
+      setState(0);
+      run.focus();
     });
   }
 
-  /* ---------------------------------------------------------------------
-     Demo 3: knowledge assistant — two predefined example questions.
-     Answers come from a fixed sample handbook; there is no live model.
-     ------------------------------------------------------------------ */
+  /* Preset document search with a visible supporting excerpt. */
   var chatControls = document.getElementById('chat-controls');
   if (chatControls) {
     var topics = {
       onboarding: {
         question: 'Where is our onboarding checklist?',
-        answer: 'Here is the checklist from your team handbook.',
+        answer: 'Start with a welcome email, account access, and the team handbook. Then arrange a first-week check-in.',
         title: 'Onboarding checklist',
-        items: ['Send welcome email', 'Set up accounts', 'Share key resources', 'Schedule first-week check-in', 'Assign a buddy']
+        excerpt: 'Before day one, send the welcome email, set up accounts, and share the team handbook. Schedule a first-week check-in and assign a buddy.'
       },
       timeoff: {
         question: 'How do I request time off?',
-        answer: 'Here’s how time off requests work, from your team handbook.',
+        answer: 'Submit your request in the HR tool at least two weeks ahead. Your manager will review it.',
         title: 'Time off policy',
-        items: ['Submit requests at least two weeks ahead', 'Your manager approves in the HR tool', 'Add the dates to the shared team calendar', 'Set an out-of-office reply before you leave']
+        excerpt: 'Submit time off requests at least two weeks ahead. Your manager approves them in the HR tool. Once approved, add the dates to the shared calendar.'
+      },
+      expenses: {
+        question: 'How do I submit an expense?',
+        answer: 'Attach your receipt, choose the expense category, and submit it to your manager for approval.',
+        title: 'Expense submissions',
+        excerpt: 'Every expense needs an itemized receipt and a category. Submit it through the expense tool for manager approval before reimbursement.'
       }
     };
-
-    var q = document.getElementById('chat-question');
-    var a = document.getElementById('chat-answer-text');
-    var t = document.getElementById('chat-source-title');
-    var list = document.getElementById('chat-source-list');
-    var buttons = chatControls.querySelectorAll('.seg__btn');
-
-    var show = function (key) {
-      var data = topics[key];
-      if (!data) return;
-      q.textContent = data.question;
-      a.textContent = data.answer;
-      t.textContent = data.title;
-      while (list.firstChild) list.removeChild(list.firstChild);
-      data.items.forEach(function (item) {
-        var li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
-      });
-      Array.prototype.forEach.call(buttons, function (b) {
-        b.setAttribute('aria-pressed', b.getAttribute('data-topic') === key ? 'true' : 'false');
-      });
-    };
-
     chatControls.hidden = false;
-    Array.prototype.forEach.call(buttons, function (b) {
-      b.addEventListener('click', function () { show(b.getAttribute('data-topic')); });
+    chatControls.querySelectorAll('[data-topic]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var topic = topics[button.dataset.topic];
+        document.getElementById('chat-question').textContent = topic.question;
+        document.getElementById('chat-answer-text').textContent = topic.answer;
+        document.getElementById('chat-source-title').textContent = topic.title;
+        document.getElementById('chat-source-excerpt').textContent = topic.excerpt;
+        chatControls.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b === button)); });
+      });
     });
   }
 })();
