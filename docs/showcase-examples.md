@@ -4,7 +4,7 @@ Fable reviewed the requested direction and recommended explicit service-category
 
 ## Website design
 
-Classic, Editorial, and Showcase controls change the arrangement of the same fictional Northline content. The layouts use a split hero, image-first editorial composition, and an integrated background composition. The old light/dark toggle has been removed. Pressed states and a live announcement communicate the selection.
+The Change style button cycles through Classic, Editorial, and Showcase arrangements of the same fictional Northline content. The layouts use a split hero, image-first editorial composition, and an integrated background composition. The old light/dark toggle has been removed. A visible layout label and a live announcement communicate the current style. The headline, text, CTA, and artwork animate from their previous positions into the new arrangement over 700ms. Rapid clicks start from the current visual positions; resizing cancels active transforms, and reduced-motion settings use instant changes.
 
 ## AI workflow automation
 
@@ -23,3 +23,5 @@ Onboarding, Time off, and Expenses presets update the question, answer, source t
 - Search presets keep answers and supporting excerpts synchronized.
 - Browser recorded no console errors and zero fetch/XHR calls while operating the demos.
 - Contact delivery remains separate and unchanged; its response regression check still passes.
+
+Animation follow-up: verified button/keyboard cycling, rapid clicks, completion cleanup, and reduced-motion behavior. A phone preview was captured from the browser animation timeline.

@@ -426,6 +426,10 @@ h3 {
 .shape--arch { width: 46%; height: 62%; border-radius: 999px 999px 0 0; background: var(--sd-b); right: 8%; bottom: 0; }
 .shape--bar { width: 22%; height: 46%; background: var(--sd-c); left: 12%; bottom: 0; }
 
+/* FLIP transforms keep text, button, and artwork visibly connected between layouts. */
+.site-demo__title, .site-demo__text, .site-demo__cta, .site-demo__art { transform-origin: top left; }
+.site-demo__title, .site-demo__text, .site-demo__cta { position: relative; z-index: 1; }
+
 /* Distinct compositions, keeping the brand and content constant. */
 .site-demo[data-layout="editorial"] .site-demo__body { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
 .site-demo[data-layout="editorial"] .site-demo__art { order: -1; min-height: 95px; height: 95px; }

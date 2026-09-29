@@ -65,21 +65,50 @@
     });
   }
 
-  /* Website layouts: one brand, three distinct compositions. */
+  /* Animate the same content between layouts using its before/after bounds. */
   var site = document.getElementById('site-demo');
   var layoutControls = document.getElementById('site-layout-controls');
   if (site && layoutControls) {
+    var layoutNames = ['Classic', 'Editorial', 'Showcase'];
+    var layoutIndex = 0;
+    var layoutParts = Array.from(site.querySelectorAll('.site-demo__title, .site-demo__text, .site-demo__cta, .site-demo__art'));
+    var layoutPage = site.querySelector('.site-demo__page');
+    var layoutAnimations = [];
+    var stopLayoutAnimation = function () {
+      layoutAnimations.forEach(function (animation) { animation.cancel(); });
+      layoutAnimations = [];
+    };
     layoutControls.hidden = false;
-    layoutControls.querySelectorAll('[data-layout]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        site.dataset.layout = button.dataset.layout;
-        layoutControls.querySelectorAll('button').forEach(function (b) {
-          b.setAttribute('aria-pressed', String(b === button));
-        });
-        document.getElementById('site-layout-name').textContent = button.textContent + ' layout';
-        document.getElementById('site-layout-status').textContent = 'Website example changed to the ' + button.textContent.toLowerCase() + ' layout.';
+    document.getElementById('site-style').addEventListener('click', function () {
+      // Capture the current visual positions first, including a running transition.
+      var before = layoutParts.map(function (part) { return part.getBoundingClientRect(); });
+      var pageHeight = layoutPage.getBoundingClientRect().height;
+      stopLayoutAnimation();
+      layoutIndex = (layoutIndex + 1) % layoutNames.length;
+      var name = layoutNames[layoutIndex];
+      site.dataset.layout = name.toLowerCase();
+      document.getElementById('site-layout-name').textContent = name + ' layout';
+      document.getElementById('site-layout-status').textContent = 'Website example changed to the ' + name.toLowerCase() + ' layout.';
+      if (reduceMotion.matches || typeof layoutPage.animate !== 'function') return;
+      var timing = { duration: 700, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' };
+      layoutParts.forEach(function (part, index) {
+        var after = part.getBoundingClientRect();
+        var old = before[index];
+        if (!after.width || !after.height) return;
+        layoutAnimations.push(part.animate([
+          { transform: 'translate(' + (old.left - after.left) + 'px,' + (old.top - after.top) + 'px) scale(' + (old.width / after.width) + ',' + (old.height / after.height) + ')' },
+          { transform: 'none' }
+        ], timing));
       });
+      layoutAnimations.push(layoutPage.animate([
+        { height: pageHeight + 'px' },
+        { height: layoutPage.getBoundingClientRect().height + 'px' }
+      ], timing));
     });
+    window.addEventListener('resize', stopLayoutAnimation);
+    if (reduceMotion.addEventListener) {
+      reduceMotion.addEventListener('change', function () { if (reduceMotion.matches) stopLayoutAnimation(); });
+    }
   }
 
   /* Local workflow illustration. Approval gates both output nodes. */
