@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# /gallery/ stays fetchable so crawlers can read its noindex tag; GitHub Pages cannot send that as a header for files.
+Disallow: /gallery/assets/
+Disallow: /gallery/app.js
 
 Sitemap: https://oopslab.ai/sitemap.xml
