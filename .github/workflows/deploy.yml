@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p _site/assets
           cp index.html website-privacy.html website-terms.html privacy.html terms.html 404.html CNAME robots.txt sitemap.xml _site/
-          cp studio.css website-legal.css styles.css studio.js contact.js contact-config.js _site/
+          cp studio.css website-legal.css studio.js contact.js contact-config.js _site/
           rsync -a --exclude='*.json' --exclude='og.svg' assets/ _site/assets/
 
       # The gallery's source stays in the private oopslab repository. Copy its built, already public files.

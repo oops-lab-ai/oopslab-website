@@ -9,3 +9,15 @@
 .website-legal ul { padding-left: 1.25em; list-style: disc; }
 .website-legal li + li { margin-top: 10px; }
 .website-legal a { overflow-wrap: anywhere; }
+/* Older policy pages carry a kicker, a metadata line, a scope note and a sign-off. */
+.website-legal .kicker { font-size: .8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 16px; }
+.website-legal .legal__meta { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 20px; font-size: .9375rem; color: var(--ink-2); }
+.website-legal .legal__section { margin-top: 40px; }
+.website-legal aside.legal__section { padding: 20px 24px; border: 1px solid var(--line, rgba(0,0,0,.14)); border-radius: 12px; }
+.website-legal .legal__section p, .website-legal .legal__section ul, .website-legal .legal__section ol { margin-top: 16px; font-size: 1rem; line-height: 1.75; }
+.website-legal aside.legal__section p:first-child { margin-top: 0; }
+.website-legal ol { padding-left: 1.25em; list-style: decimal; }
+.website-legal section ul ul { margin-top: 10px; }
+.website-legal h3 { margin-top: 24px; font-size: 1.0625rem; line-height: 1.4; }
+.website-legal .legal__signoff { margin-top: 40px; color: var(--ink-2); }
+.website-legal section a, .website-legal aside a { text-decoration: underline; text-underline-offset: 2px; }
