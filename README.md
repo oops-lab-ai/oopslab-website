@@ -4,7 +4,7 @@ Static consultancy website for AI automation, custom software, websites, and tec
 
 ## Local development
 
-Serve this directory with any static HTTP server, for example `python3 -m http.server 8000`. The homepage uses `studio.css`, `studio.js`, `contact.js`, and `contact-config.js`. Legal pages use `styles.css`.
+Serve this directory with any static HTTP server, for example `python3 -m http.server 8000`. The homepage uses `studio.css`, `studio.js`, `contact.js`, and `contact-config.js`. Legal pages use `studio.css` and `website-legal.css`.
 
 ## Deployment
 
