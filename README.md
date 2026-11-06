@@ -10,7 +10,7 @@ Serve this directory with any static HTTP server, for example `python3 -m http.s
 
 Pushes to `main` deploy to https://oopslab.ai/ through the GitHub Pages workflow. The workflow prepares an explicit `_site` directory containing website pages, scripts, styles, discovery files, and assets. Documentation, image-generation metadata, and design working files are excluded from hosting.
 
-The unlisted demo gallery at https://oopslab.ai/gallery/ is copied at deploy time from `website/src/gallery` on the `main` branch of the private oops-lab-ai/oopslab repository, using a read-only deploy key. To publish a new gallery, merge it there, then run this workflow by hand. Nothing links to it and it is noindexed, but anyone with the URL can open it.
+The unlisted demo gallery at https://oopslab.ai/gallery/ is copied at deploy time from https://oopslab.pages.dev/gallery/, which the private oops-lab-ai/oopslab repository publishes from `website/src/gallery`. To publish a new gallery, release it there, then run this workflow by hand. Nothing links to it and it is noindexed, but anyone with the URL can open it.
 
 ## Inquiries
 

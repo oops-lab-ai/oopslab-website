@@ -24,17 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # The demo gallery's source stays in the private repository; only the built pages are published.
-      - name: Checkout the gallery
-        uses: actions/checkout@v4
-        with:
-          repository: oops-lab-ai/oopslab
-          ref: main
-          path: _private
-          ssh-key: ${{ secrets.OOPSLAB_GALLERY_DEPLOY_KEY }}
-          persist-credentials: false
-          sparse-checkout: website/src/gallery
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -45,10 +34,18 @@ jobs:
           cp studio.css website-legal.css styles.css studio.js contact.js contact-config.js _site/
           rsync -a --exclude='*.json' --exclude='og.svg' assets/ _site/assets/
 
+      # The gallery's source stays in the private oopslab repository. Copy its built, already public files.
       - name: Add the unlisted gallery
         run: |
-          cp -r _private/website/src/gallery _site/gallery
+          origin=https://oopslab.pages.dev/gallery
+          mkdir -p _site/gallery/assets
+          curl --fail --silent --show-error --retry 3 -o _site/gallery/index.html "$origin/"
+          curl --fail --silent --show-error --retry 3 -o _site/gallery/app.js "$origin/app.js"
           grep -q 'noindex,nofollow,noimageindex' _site/gallery/index.html
+          grep -oE "\./assets/[^\"'\`\\)]+" _site/gallery/app.js | sed 's#^\./##' | sort -u > gallery-files.txt
+          test "$(wc -l < gallery-files.txt)" -gt 100
+          xargs -P 8 -I {} curl --fail --silent --show-error --retry 3 -o "_site/gallery/{}" "$origin/{}" < gallery-files.txt
+          test "$(ls _site/gallery/assets | wc -l)" -eq "$(wc -l < gallery-files.txt)"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
