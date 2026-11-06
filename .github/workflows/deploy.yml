@@ -24,6 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # The demo gallery's source stays in the private repository; only the built pages are published.
+      - name: Checkout the gallery
+        uses: actions/checkout@v4
+        with:
+          repository: oops-lab-ai/oopslab
+          ref: main
+          path: _private
+          ssh-key: ${{ secrets.OOPSLAB_GALLERY_DEPLOY_KEY }}
+          persist-credentials: false
+          sparse-checkout: website/src/gallery
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -33,6 +44,11 @@ jobs:
           cp index.html website-privacy.html website-terms.html privacy.html terms.html 404.html CNAME robots.txt sitemap.xml _site/
           cp studio.css website-legal.css styles.css studio.js contact.js contact-config.js _site/
           rsync -a --exclude='*.json' --exclude='og.svg' assets/ _site/assets/
+
+      - name: Add the unlisted gallery
+        run: |
+          cp -r _private/website/src/gallery _site/gallery
+          grep -q 'noindex,nofollow,noimageindex' _site/gallery/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

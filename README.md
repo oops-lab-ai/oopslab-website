@@ -10,6 +10,8 @@ Serve this directory with any static HTTP server, for example `python3 -m http.s
 
 Pushes to `main` deploy to https://oopslab.ai/ through the GitHub Pages workflow. The workflow prepares an explicit `_site` directory containing website pages, scripts, styles, discovery files, and assets. Documentation, image-generation metadata, and design working files are excluded from hosting.
 
+The unlisted demo gallery at https://oopslab.ai/gallery/ is copied at deploy time from `website/src/gallery` on the `main` branch of the private oops-lab-ai/oopslab repository, using a read-only deploy key. To publish a new gallery, merge it there, then run this workflow by hand. Nothing links to it and it is noindexed, but anyone with the URL can open it.
+
 ## Inquiries
 
 The contact form uses FormSubmit to deliver to dev@oopslab.ai. Both preview and production origins have been activated, and a final live-site test inquiry was received. Initial test mail was classified as spam; check that folder if an inquiry appears missing. Each new origin may require activation. See [contact form notes](docs/contact-form.md).
